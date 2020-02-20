@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>modal</title>
+    <link rel="stylesheet" href="modal.css">
+</head>
+
+<body>
+
+    <button id="modals">open modal</button>
+    <script src="modal.js"></script>
+    <script>
+        let auto = 0
+        const button = document.getElementById('modals');
+        button.addEventListener('click', function () {
+            return Modal.alert({
+                title: "Github",
+                message: "Welcome to the Modal Framework!",
+                animate: "slide",
+                // event: 'success',
+                // backdrop: true,
+                delay: 4000,
+                // position: 'top-left',
+                // cancel: 'Cancel',
+                confirm: 'Confirm',  
+                // width: '32em',
+                // minWidth: '16em',
+                // maxWidth: '42em',
+                then: () => {
+                    return console.log('Nasser ' + ++auto)
+                },
+            })
+        })
+
+
+    </script>
+
+</body>
+
+</html>
