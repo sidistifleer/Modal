@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>modal</title>
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+
+<body>
+
+
+    <button id="modals">Open Modal</button>
+    <div class="EL"></div>
+    <script src="js/modal.js"></script>
+    <!-- <script src="babel.js"></script> -->
+    <script>
+        const conf = document.createElement('button')
+        const arr = { 'id': 'confirm', 'label': 'btn', 'onclick': 'confirm2()' }
+        const cls = ['btn', 'btn-dark', 'btn-modal']
+        for (const e in arr) { conf.setAttribute(e, arr[e]) }
+        for (const h in cls) { conf.classList.add(cls[h]) }
+        conf.innerText = 'Confirm'
+        function confirm2() {
+            return Modal.create({ type: 'confirm',  title: "Github", })
+        }
+        const toas = document.createElement('button')
+        arr['onclick'] = 'toast2()'
+        for (const e in arr) { toas.setAttribute(e, arr[e]) }
+        for (const h in cls) { toas.classList.add(cls[h]) }
+        toas.innerText = 'Toast'
+        function toast2() {
+            return Modal.toast({})
+        }
+        const aler = document.createElement('button')
+        arr['onclick'] = 'alert2()'
+        for (const e in arr) { aler.setAttribute(e, arr[e]) }
+        for (const h in cls) { aler.classList.add(cls[h]) }
+        aler.innerText = 'Alert'
+        function alert2() {
+            return Modal.alert({
+                el: '.sdiv'
+            })
+        }
+        const div = document.createElement('div')
+        div.classList.add('sdiv')
+        p = document.createElement('p')
+        p.innerText = "Chosse Your Modal Type !"
+        div.appendChild(p)
+        div.appendChild(conf)
+        div.appendChild(toas)
+        div.appendChild(aler)
+
+        let auto = 0
+        const button = document.getElementById('modals');
+        button.addEventListener('click', function () {
+            return Modal.create({
+                // el: '.EL',
+                title: "Github",
+                html: div,
+                // animate: "slide",
+                event: 'success',
+                // backdrop: true,
+                // delay: 4000,
+                // position: 'top-left',
+                cancel: 'Cancel',
+                confirm: 'Confirm',
+                // width: '32em',
+                // minWidth: '16em',
+                // maxWidth: '42em',
+                then: () => {
+                    return console.log('Nothing Happen');
+                },
+            })
+        })
+    </script>
+
+</body>
+
+</html>
